@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Eddieodira\Shoppingcart;
 
+use CodeIgniter\I18n\Time;
+use CodeIgniter\Events\Events;
+use CodeIgniter\Config\Services;
+use Illuminate\Support\Collection;
 use Eddieodira\Shoppingcart\Contracts\Buyable;
+use Eddieodira\Shoppingcart\Models\ShoppingCart;
 use Eddieodira\Shoppingcart\Exceptions\InvalidRowIDException;
 use Eddieodira\Shoppingcart\Exceptions\UnknownModelException;
-use Eddieodira\Shoppingcart\Models\ShoppingCart;
-use CodeIgniter\Config\Services;
-use CodeIgniter\Events\Events;
-use CodeIgniter\I18n\Time;
-use Illuminate\Support\Collection;
 
 class Cart
 {
@@ -242,7 +242,7 @@ class Cart
         $content = $this->getContent();
 
         $total = $content->reduce(function ($total, CartItem $cartItem) {
-             return $total + ($cartItem->qty * $cartItem->rowTotal) + ($cartItem->qty * $cartItem->tax);
+            return $total + ($cartItem->qty * $cartItem->priceTax);
         }, 0);
 
         return CartItem::numberFormat($total, $dPlace, $dPoint, $nSeparator);

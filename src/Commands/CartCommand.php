@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Eddieodira\Shoppingcart\Commands;
 
-use CodeIgniter\CLI\BaseCommand;
-use CodeIgniter\CLI\CLI;
 use Config\Autoload;
+use CodeIgniter\CLI\CLI;
+use CodeIgniter\CLI\BaseCommand;
 
 class CartCommand extends BaseCommand
 {

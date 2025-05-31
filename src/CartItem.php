@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Eddieodira\Shoppingcart;
 
-use Eddieodira\Shoppingcart\Contracts\Buyable;
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Arr;
+use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Contracts\Support\Arrayable;
+use Eddieodira\Shoppingcart\Contracts\Buyable;
 
 class CartItem implements Arrayable, Jsonable
 {
