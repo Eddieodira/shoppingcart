@@ -3,9 +3,8 @@
     "description": "Codeigniter4 Shopping Cart Library",
     "type": "library",
     "require": {
-        "illuminate/support": "php",
-        "php": "^8.3",
-        "codeigniter4/framework": "^4.6"
+        "illuminate/support": "^12.16",
+        "php": "^8.3"
     },
     "license": "MIT",
     "autoload": {
