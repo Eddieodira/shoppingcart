@@ -38,9 +38,10 @@ Example how to load library
 ```php
 // Via services
 $cart = \Eddieodira\Shoppingcart\Config\Services::cart(); 
-// Or
 
+// Or
 $cart = service('cart');
+
 // Then
 $cart->add();
 
