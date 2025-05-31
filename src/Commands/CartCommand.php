@@ -115,30 +115,23 @@ class CartCommand extends BaseCommand
     protected function writeFile(string $path, string $content)
     {
         $config = new Autoload();
-        $path = $config->psr4[APP_NAMESPACE] . $path;
-        $cleanPath = clean_path($path);
-        $directory = dirname($path);
+        $appPath = $config->psr4[APP_NAMESPACE];
 
-        if (! is_dir($directory)) {
+        $directory = dirname($appPath . $path);
+
+        if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
 
-        if (file_exists($path)) {
-            $overwrite = (bool) CLI::getOption('f');
-            if (
-                ! $overwrite
-                && $this->prompt("  File '{$cleanPath}' already exists in destination. Overwrite?", ['n', 'y']) === 'n'
-            ) {
-                $this->error("  Skipped {$cleanPath}. If you wish to overwrite, please use the '-f' option or reply 'y' to the prompt.");
-
-                return;
-            }
+        try {
+            write_file($appPath.$path, $content);
+        } catch (\Exception $e) {
+            $this->showError($e);
+            exit();
         }
 
-        if (write_file($path, $content)) {
-            $this->write(CLI::color('  Created: ', 'green') . $cleanPath);
-        } else {
-            $this->error("  Error creating {$cleanPath}.");
-        }
+        $path = str_replace($appPath, '', $path);
+
+        CLI::write(CLI::color('  created: ', 'green').$path);
     }
 }
