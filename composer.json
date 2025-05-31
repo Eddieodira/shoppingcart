@@ -3,7 +3,6 @@
     "description": "Codeigniter4 Shopping Cart Library",
     "type": "library",
     "require": {
-        "eddieodira/shoppingcart": "v1.0.0-alpha",
         "illuminate/support": "^12.16",
         "php": "^8.3"
     },
