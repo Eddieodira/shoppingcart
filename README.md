@@ -307,7 +307,7 @@ Because it can be very convenient to be able to directly access a model from a C
 
 That way you can access your model right from the `CartItem`!
 
-The model can be accessed via the `model` property on the CartItem.
+The model can be accessed via the `cart_model` property on the CartItem.
 
 **If your model implements the `Buyable` interface and you used your model to add the item to the cart, it will associate automatically.**
 
@@ -343,7 +343,7 @@ To save cart into the database so you can retrieve it later, the package needs t
 By default the package will use the default database connection and use a table named `cart`.
 If you want to change these options, you'll have to publish the `config` file.
 
-    php spark config:publish
+    php spark cart:publish
 
 This will give you a `Cart.php` config file in which you can make the changes.
 
