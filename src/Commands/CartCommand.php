@@ -15,35 +15,35 @@ class CartCommand extends BaseCommand
      *
      * @var string
      */
-    protected string $group = 'Cart';
+    protected $group = 'Shopping';
 
     /**
      * The command's name.
      *
      * @var string
      */
-    protected string $name = 'cart:publish';
+    protected $name = 'cart:publish';
 
     /**
      * The command's short description.
      *
      * @var string
      */
-    protected string $description = 'Publish config cart to folder App\Config';
+    protected $description = 'Publish config cart to folder App\Config';
 
     /**
      * The command's usage.
      *
      * @var string
      */
-    protected string $usage = 'cart:publish';
+    protected $usage = 'cart:publish';
 
     /**
      * The path directory.
      *
      * @var string
      */
-    protected string $sourcePath;
+    protected $sourcePath;
 
 
     /**
