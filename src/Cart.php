@@ -242,7 +242,7 @@ class Cart
         $content = $this->getContent();
 
         $total = $content->reduce(function ($total, CartItem $cartItem) {
-            return $total + ($cartItem->qty * $cartItem->priceTax);
+            return $total + ($cartItem->qty * $cartItem->rowTotal) + ($cartItem->qty * $cartItem->tax);
         }, 0);
 
         return CartItem::numberFormat($total, $dPlace, $dPoint, $nSeparator);
