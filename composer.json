@@ -1,0 +1,22 @@
+{
+    "name": "eddieodira/shoppingcart",
+    "description": "Codeigniter4 Shopping Cart Library",
+    "type": "library",
+    "require": {
+        "illuminate/support": "php",
+        "php": "^8.3",
+        "codeigniter4/framework": "^4.6"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Eddieodira\\Shoppingcart\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Eddy Odingo Odira"
+        }
+    ],
+    "minimum-stability": "stable"
+}
