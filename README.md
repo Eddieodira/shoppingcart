@@ -38,14 +38,24 @@ Example how to load library
 ```php
 // Via services 1
 $cart = \Eddieodira\Shoppingcart\Config\Services::cart(); 
+$cart->add();
+
+//Or
+use Eddieodira\Shoppingcart\Config\Services;
+$cart = Services::cart();
+$cart->add();
 
 // Via services 2
 $cart = service('cart');
+$cart->add();
 
 // Traditional way
 $cart = new \Eddieodira\Shoppingcart\Cart();
+$cart->add();
 
-//Then you can access the method as
+//Or
+use Eddieodira\Shoppingcart\Cart;
+$cart = new Cart();
 $cart->add();
 
 // Statically as
