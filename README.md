@@ -36,20 +36,19 @@ Look at one of the following topics to learn more about CodeIgniter4 ShoppingCar
 Example how to load library
 
 ```php
-// Via services
+// Via services 1
 $cart = \Eddieodira\Shoppingcart\Config\Services::cart(); 
 
-// Or
+// Via services 2
 $cart = service('cart');
-
-// Then
-$cart->add();
 
 // Traditional way
 $cart = new \Eddieodira\Shoppingcart\Cart();
+
+//Then you can use the method as
 $cart->add();
 
-// Static call
+// Statically as
 use Eddieodira\Shoppingcart\Facades\Cart;
 
 Cart::add()
