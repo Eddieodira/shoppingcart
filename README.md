@@ -37,7 +37,7 @@ Example how to load library
 
 ```php
 // Via services
-$cart = \Eddieodira\Shoppingcart\Config\Services::cart();
+$cart = \Eddieodira\Shoppingcart\Config\Services::cart(); /*Or*/ $cart = service('cart');
 $cart->add();
 
 // Traditional way
