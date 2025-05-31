@@ -6,7 +6,7 @@ namespace Eddieodira\Shoppingcart\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateShoppingcartTable extends Migration
+class CreateCartTable extends Migration
 {
     protected $table;
 
@@ -14,7 +14,7 @@ class CreateShoppingcartTable extends Migration
     {
         parent::__construct();
 
-        $this->table = config('Cart')->table ?? 'shoppingcart';
+        $this->table = config('Cart')->table ?? 'cart';
     }
 
     public function up()

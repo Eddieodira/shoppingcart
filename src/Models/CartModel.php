@@ -6,7 +6,7 @@ namespace Eddieodira\Shoppingcart\Models;
 
 use CodeIgniter\Model;
 
-class ShoppingCart extends Model
+class CartModel extends Model
 {
     protected $table;
     protected $primaryKey = 'id';
@@ -25,6 +25,6 @@ class ShoppingCart extends Model
     {
         parent::__construct();
         
-        $this->table = config('Cart')->table ?? 'shoppingcart';
+        $this->table = config('Cart')->table ?? 'cart';
     }
 }

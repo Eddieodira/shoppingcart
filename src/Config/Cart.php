@@ -18,7 +18,7 @@ class Cart extends BaseConfig
      * Here you can set the connection that the shoppingcart should use when
      * storing and restoring a cart.
      */
-    public string $table = 'shoppingcart';
+    public string $table = 'cart';
 
     /**
      * This defaults will be used for the formated numbers if you don't
