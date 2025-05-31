@@ -124,9 +124,9 @@ class CartItem implements Arrayable, Jsonable
      * @param string|null $nSeparator
      * @return string
      */
-    public function priceTax(?int $dPlace = null, ?string $dPoint = null, ?string $nSeparator = null): string
+    public function rowTotal(?int $dPlace = null, ?string $dPoint = null, ?string $nSeparator = null): string
     {
-        return static::numberFormat($this->priceTax, $dPlace, $dPoint, $nSeparator);
+        return static::numberFormat($this->rowTotal, $dPlace, $dPoint, $nSeparator);
     }
 
     /**
@@ -207,7 +207,7 @@ class CartItem implements Arrayable, Jsonable
         $this->id = $item->getBuyableIdentifier($this->options);
         $this->name = $item->getBuyableDescription($this->options);
         $this->price = $item->getBuyablePrice($this->options);
-        $this->priceTax = $this->price + $this->tax;
+        $this->rowTotal = $this->price + $this->tax;
     }
 
     /**
@@ -223,7 +223,7 @@ class CartItem implements Arrayable, Jsonable
         $this->name = Arr::get($attributes, 'name', $this->name);
         $this->price = Arr::get($attributes, 'price', $this->price);
         $this->options = new CartItemOptions(Arr::get($attributes, 'options', $this->options));
-        $this->priceTax = $this->price + $this->tax;
+        $this->rowTotal = $this->price;
 
         $this->rowId = $this->generateRowId($this->id, $this->options->all());
     }
@@ -279,8 +279,8 @@ class CartItem implements Arrayable, Jsonable
             return $this->{$attribute};
         }
 
-        if ($attribute === 'priceTax') {
-            return number_format(($this->price + $this->tax), 2, '.', '');
+        if ($attribute === 'rowTotal') {
+            return number_format(($this->price), 2, '.', '');
         }
 
         if ($attribute === 'subtotal') {
@@ -288,7 +288,7 @@ class CartItem implements Arrayable, Jsonable
         }
 
         if ($attribute === 'total') {
-            return number_format(($this->qty * $this->priceTax), 2, '.', '');
+            return number_format(($this->qty * $this->rowTotal), 2, '.', '');
         }
 
         if ($attribute === 'tax') {
