@@ -45,7 +45,7 @@ $cart = service('cart');
 // Traditional way
 $cart = new \Eddieodira\Shoppingcart\Cart();
 
-//Then you can use the method as
+//Then you can access the method as
 $cart->add();
 
 // Statically as
