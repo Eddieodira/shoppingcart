@@ -115,23 +115,22 @@ class CartCommand extends BaseCommand
     protected function writeFile(string $path, string $content)
     {
         $config = new Autoload();
-        $appPath = $config->psr4[APP_NAMESPACE];
-
-        $directory = dirname($appPath . $path);
+        $filePath = $config->psr4[APP_NAMESPACE] . $path;
+        $directory = dirname($filePath);
 
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
 
         try {
-            write_file($appPath.$path, $content);
+            write_file($directory, $content);
         } catch (\Exception $e) {
             $this->showError($e);
             exit();
         }
 
-        $path = str_replace($appPath, '', $path);
+        $path = str_replace($config->psr4[APP_NAMESPACE], '', $path);
 
-        CLI::write(CLI::color('  created: ', 'green').$path);
+        CLI::write(CLI::color('  created: ', 'green') . $path);
     }
 }
