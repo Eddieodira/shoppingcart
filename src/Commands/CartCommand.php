@@ -15,7 +15,7 @@ class CartCommand extends BaseCommand
      *
      * @var string
      */
-    protected string $group = 'Shopping Cart';
+    protected string $group = 'cart';
 
     /**
      * The command's name.
