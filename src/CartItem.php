@@ -231,12 +231,12 @@ class CartItem implements Arrayable, Jsonable
     /**
      * Associate the cart item with the given model.
      *
-     * @param mixed $model
+     * @param mixed $cart_model
      * @return \Fluent\ShoppingCart\CartItem
      */
-    public function associate(ShoppingCart $model): CartItem
+    public function associate(CartModel $cart_model): CartItem
     {
-        $this->associatedModel = is_string($model) ? $model : get_class($model);
+        $this->associatedModel = is_string($cart_model) ? $cart_model : get_class($cart_model);
 
         return $this;
     }

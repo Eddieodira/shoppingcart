@@ -8,8 +8,8 @@ use CodeIgniter\I18n\Time;
 use CodeIgniter\Events\Events;
 use CodeIgniter\Config\Services;
 use Illuminate\Support\Collection;
+use Eddieodira\Shoppingcart\Models\CartModel;
 use Eddieodira\Shoppingcart\Contracts\Buyable;
-use Eddieodira\Shoppingcart\Models\ShoppingCart;
 use Eddieodira\Shoppingcart\Exceptions\InvalidRowIDException;
 use Eddieodira\Shoppingcart\Exceptions\UnknownModelException;
 
@@ -27,9 +27,9 @@ class Cart
     /**
      * Model shopping cart.
      *
-     * @var \Fluent\ShoppingCart\Models\ShoppingCart $model
+     * @var \Fluent\ShoppingCart\Models\CartModel $cart_model
      */
-    protected ShoppingCart $model;
+    protected CartModel $cart_model;
 
     /**
      * @var string
@@ -44,7 +44,7 @@ class Cart
     {
         $this->session = Services::session();
 
-        $this->model = new ShoppingCart();
+        $this->cart_model = new CartModel();
 
         $this->instance(self::DEFAULT_INSTANCE);
     }
@@ -301,18 +301,18 @@ class Cart
      * Associate the cart item with the given rowId with the given model.
      *
      * @param string $rowId
-     * @param mixed  $model
+     * @param mixed  $cart_model
      * @return void
      */
-    public function associate(string $rowId, ShoppingCart $model): void
+    public function associate(string $rowId, CartModel $cart_model): void
     {
-        if (is_string($model) && ! class_exists($model)) {
-            throw new UnknownModelException("The supplied model {$model} does not exist.");
+        if (is_string($cart_model) && ! class_exists($cart_model)) {
+            throw new UnknownModelException("The supplied model {$cart_model} does not exist.");
         }
 
         $cartItem = $this->get($rowId);
 
-        $cartItem->associate($model);
+        $cartItem->associate($cart_model);
 
         $content = $this->getContent();
 
